@@ -24,8 +24,8 @@ function getGifs() {
     $.ajax({
         method: "GET",
         url: queryUrl
-            //once the ajax call has loaded, then show the response
-    }).then(function(response) {
+        //once the ajax call has loaded, then show the response
+    }).then(function (response) {
         console.log(response);
         //get 8x2 cards
         //create a loop that gets exactly 8 cards
@@ -68,9 +68,42 @@ function shuffle(arra1) {
 
 //here we are finally adding the randomly shuffled cards to the html
 function addImagesToTiles() {
-    $("button.tile").each(function() {
-        console.log(this);
-        //this is where we add them to the html!
-        //!!!** cworking movie app UNIT 6 **!!!
-    })
+    var newRow = $("<div>").addClass("row");
+    for (var i = 0; i < 4; i++) {
+        var newButton = $("<button>").addClass("box imageCover");
+        var image = $("<img>")
+        image.attr("src", imgURLs[i]);
+
+        $(".grid").append(newRow);
+        newRow.append(newButton);
+        newButton.append(image);
+    }
+    var newRow2 = $("<div>").addClass("row")
+    for (var i = 4; i < 8; i++) {
+        var newButton = $("<button>").addClass("box imageCover");
+
+        $(".grid").append(newRow2);
+        newRow2.append(newButton);
+    }
+    var newRow3 = $("<div>").addClass("row");
+    for (var i = 8; i < 12; i++) {
+        var newButton = $("<button>").addClass("box imageCover");
+
+        $(".grid").append(newRow3);
+        newRow3.append(newButton);
+    }
+
+    var newRow4 = $("<div>").addClass("row");
+    for (var i = 12; i < 16; i++) {
+        var newButton = $("<button>").addClass("box imageCover");
+
+        $(".grid").append(newRow4);
+        newRow4.append(newButton);
+    }
+
+    $(".imageCover").click(function () {
+        $(this).toggleClass("imageCover");
+    });
+
+
 }
