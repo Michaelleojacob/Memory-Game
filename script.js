@@ -24,7 +24,7 @@ function getGifs() {
     $.ajax({
         method: "GET",
         url: queryUrl
-        //once the ajax call has loaded, then show the response
+            //once the ajax call has loaded, then show the response
     }).then(function(response) {
         console.log(response);
         //get 8x2 cards
@@ -41,7 +41,7 @@ function getGifs() {
         //BE SURE TO REMOVE THIS CONSOLE LOG. 
         //this shows the random 
         console.log(imgURLs);
-        
+
     });
 }
 //calling function
@@ -49,28 +49,28 @@ getGifs();
 
 //this piece of code is what shuffles the 8x2 cards and saves it as a function
 function shuffle(arra1) {
-    var ctr = arra1.length, temp, index;
-    
+    var ctr = arra1.length,
+        temp, index;
+
     // While there are elements in the array
     while (ctr > 0) {
         // Pick a random index
         index = Math.floor(Math.random() * ctr);
         // Decrease ctr by 1
         ctr--;
-// And swap the last element with it
-temp = arra1[ctr];
-arra1[ctr] = arra1[index];
-arra1[index] = temp;
-}
-return arra1;
+        // And swap the last element with it
+        temp = arra1[ctr];
+        arra1[ctr] = arra1[index];
+        arra1[index] = temp;
+    }
+    return arra1;
 }
 
 //here we are finally adding the randomly shuffled cards to the html
-function addImagesToTiles(){
-    $("button.tile").each(function(){
+function addImagesToTiles() {
+    $("button.tile").each(function() {
         console.log(this);
         //this is where we add them to the html!
         //!!!** cworking movie app UNIT 6 **!!!
     })
 }
-
