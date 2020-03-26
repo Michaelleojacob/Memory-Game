@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>test box</title>
+    <title>Memory Game Branch</title>
 
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <link rel="stylesheet" href="./style.css" />
@@ -39,48 +39,50 @@
                 <div class="inner">4</div>
             </button>
 
+
+
         </div>
         <div class="row">
-            <button class="box">
+            <button class="box imageCover">
                 <div class="inner">6</div>
             </button>
-            <button class="box">
+            <button class="box imageCover">
                 <div class="inner">7</div>
             </button>
-            <button class="box">
+            <button class="box imageCover">
                 <div class="inner">8</div>
             </button>
-            <button class="box">
+            <button class="box imageCover">
                 <div class="inner">9</div>
             </button>
 
         </div>
         <div class="row">
-            <button class="box">
+            <button class="box imageCover">
                 <div class="inner">11</div>
             </button>
-            <button class="box">
+            <button class="box imageCover">
                 <div class="inner">12</div>
             </button>
-            <button class="box">
+            <button class="box imageCover">
                 <div class="inner">13</div>
             </button>
-            <button class="box">
+            <button class="box imageCover">
                 <div class="inner">14</div>
             </button>
 
         </div>
         <div class="row">
-            <button class="box">
+            <button class="box imageCover">
                 <div class="inner">16</div>
             </button>
-            <button class="box">
+            <button class="box imageCover">
                 <div class="inner">17</div>
             </button>
-            <button class="box">
+            <button class="box imageCover">
                 <div class="inner">18</div>
             </button>
-            <button class="box">
+            <button class="box imageCover">
                 <div class="inner">19</div>
             </button>
 
@@ -99,6 +101,32 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="script.js" type="text/javascript"></script>
+
+    <script>
+        // $(button).on("click", function() {
+        //     $(".imageCover").toggleClass("imageCover")
+        // })
+
+
+        // -----------
+        // var uncoverCard = document.getElementsByClassName('imageCover');
+
+        // for (var i = 0; i < uncoverCard.length; i++) {
+        //     //console.log(buttons[i].style.opacity );
+
+        //     //-- The button does not have any opacity attribute unless you have set it in the inspector.
+        //     //So I found surronding the numbers in quotes works better for all possibilities 
+
+        //     uncoverCard[i].style.opacity = (globalThis[i].style.opacity == "0" ? "1" : "0");
+        // }
+
+        // ---------
+
+
+        $(".imageCover").click(function() {
+            $(this).toggleClass("imageCover");
+        });
+    </script>
 
 </body>
 
