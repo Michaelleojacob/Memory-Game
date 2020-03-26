@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hello Bulma!</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <title>Memory Game Branch</title>
+
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <link rel="stylesheet" href="./style.css" />
 </head>
@@ -20,176 +20,113 @@
         <div class="hero-text">
             <p id="headerText" style="font-size:35px">Memory Game</p>
             <p id="testText" style="font-size:20px">Test Your Mind!</p>
-            <button id="startButton">Score Here</button>
+            <button id="startButton">Start Here</button>
         </div>
     </div>
     <br>
-
-    <div class="tile is-ancestor is-flex-mobile">
-        <div class="tile is-parent">
-            <button id="cardOne" class="tile is-child box has-background-primary">     
-                <figure class="imageCover is-64x64">     
-                
-            </figure>  
-
+    <div class="grid">
+        <div class="row">
+            <button class="box imageCover">
+                <div class="inner">1</div>
             </button>
-        </div>
-        <div class="tile is-parent">
-            <button id="cardTwo" class="tile is-child box has-background-primary">
-                <figure class="imageCover is-64x64">     
-                    
-                </figure> 
-
+            <button class="box imageCover">
+                <div class="inner">2</div>
             </button>
-        </div>
-        <div class="tile is-parent">
-            <button id="cardThree" class="tile is-child box has-background-primary">
-                <figure class="imageCover is-64x64">     
-                
-            </figure> 
-                
-
+            <button class="box imageCover">
+                <div class="inner">3</div>
             </button>
-        </div>
-        <div class="tile is-parent">
-            <button id="cardFour" class="tile is-child box has-background-primary">
-                <figure class="imageCover is-64x64">     
-                
-            </figure> 
-            
-
+            <button class="box imageCover">
+                <div class="inner">4</div>
             </button>
+
+
+
         </div>
+        <div class="row">
+            <button class="box imageCover">
+                <div class="inner">6</div>
+            </button>
+            <button class="box imageCover">
+                <div class="inner">7</div>
+            </button>
+            <button class="box imageCover">
+                <div class="inner">8</div>
+            </button>
+            <button class="box imageCover">
+                <div class="inner">9</div>
+            </button>
+
+        </div>
+        <div class="row">
+            <button class="box imageCover">
+                <div class="inner">11</div>
+            </button>
+            <button class="box imageCover">
+                <div class="inner">12</div>
+            </button>
+            <button class="box imageCover">
+                <div class="inner">13</div>
+            </button>
+            <button class="box imageCover">
+                <div class="inner">14</div>
+            </button>
+
+        </div>
+        <div class="row">
+            <button class="box imageCover">
+                <div class="inner">16</div>
+            </button>
+            <button class="box imageCover">
+                <div class="inner">17</div>
+            </button>
+            <button class="box imageCover">
+                <div class="inner">18</div>
+            </button>
+            <button class="box imageCover">
+                <div class="inner">19</div>
+            </button>
+
+        </div>
+
+
     </div>
-
-    <br>
-    <div class="tile is-ancestor is-flex-mobile">
-        <div class="tile is-parent">
-            <button id="cardFive" class="tile is-child box has-background-primary">     
-                <figure class="imageCover is-64x64">     
-                
-            </figure>  
-
-            </button>
-        </div>
-        <div class="tile is-parent">
-            <button id="cardSix" class="tile is-child box has-background-primary">
-                <figure class="imageCover is-64x64">     
-                    
-                </figure> 
-
-            </button>
-        </div>
-        <div class="tile is-parent">
-            <button id="cardSeven" class="tile is-child box has-background-primary">
-                <figure class="imageCover is-64x64">     
-                
-            </figure> 
-                
-
-            </button>
-        </div>
-        <div class="tile is-parent">
-            <button id="cardEight" class="tile is-child box has-background-primary">
-                <figure class="imageCover is-64x64">     
-                
-            </figure> 
-            
-
-            </button>
-        </div>
-    </div>
-    </div>
-
-    <br>
-    <div class="tile is-ancestor is-flex-mobile">
-        <div class="tile is-parent">
-            <button id="cardNine" class="tile is-child box has-background-primary">     
-                <figure class="imageCover is-64x64">     
-                
-            </figure>  
-
-            </button>
-        </div>
-        <div class="tile is-parent">
-            <button id="cardTen" class="tile is-child box has-background-primary">
-                <figure class="imageCover is-64x64">     
-                    
-                </figure> 
-
-            </button>
-        </div>
-        <div class="tile is-parent">
-            <button id="cardEleven" class="tile is-child box has-background-primary">
-                <figure class="imageCover is-64x64">     
-                
-            </figure> 
-                
-
-            </button>
-        </div>
-        <div class="tile is-parent">
-            <button id="cardTwelve" class="tile is-child box has-background-primary">
-                <figure class="imageCover is-64x64">     
-                
-            </figure> 
-            
-
-            </button>
-        </div>
-    </div>
-
-    <br>
-    <div class="tile is-ancestor is-flex-mobile">
-        <div class="tile is-parent">
-            <button id="cardThirteen" class="tile is-child box has-background-primary">     
-                <figure class="imageCover is-64x64">     
-                
-            </figure>  
-
-            </button>
-        </div>
-        <div class="tile is-parent">
-            <button id="cardFourteen" class="tile is-child box has-background-primary">
-                <figure class="imageCover is-64x64">     
-                    
-                </figure> 
-
-            </button>
-        </div>
-        <div class="tile is-parent">
-            <button id="cardFifteen" class="tile is-child box has-background-primary">
-                <figure class="imageCover is-64x64">     
-                
-            </figure> 
-                
-
-            </button>
-        </div>
-        <div class="tile is-parent">
-            <button id="cardSixteen" class="tile is-child box has-background-primary">
-                <figure class="imageCover is-64x64">     
-                
-            </figure> 
-            
-
-            </button>
-        </div>
-    </div>
-    </div>
-    <br>
-
 
 
     <footer id="footer" class="footer">
-        <div id="footer" class="content has-text-centered">
-            <input class="button" type="submit" value="Start">
-            <input class="button" type="reset" value="Reset">
+        <div id="footer" class="footer-button">
+            <button class="button" type="submit" value="Start">Start</button>
+            <button class="button" type="reset" value="Reset">Reset</button>
         </div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="script.js" type="text/javascript"></script>
+
+    <script>
+        // $(button).on("click", function() {
+        //     $(".imageCover").toggleClass("imageCover")
+        // })
+
+
+        // -----------
+        // var uncoverCard = document.getElementsByClassName('imageCover');
+
+        // for (var i = 0; i < uncoverCard.length; i++) {
+        //     //console.log(buttons[i].style.opacity );
+
+        //     //-- The button does not have any opacity attribute unless you have set it in the inspector.
+        //     //So I found surronding the numbers in quotes works better for all possibilities 
+
+        //     uncoverCard[i].style.opacity = (globalThis[i].style.opacity == "0" ? "1" : "0");
+        // }
+
+        // ---------
+
+
+        $(".imageCover").click(function() {
+            $(this).toggleClass("imageCover");
+        });
+    </script>
 
 </body>
 
