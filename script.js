@@ -80,25 +80,34 @@ function addImagesToTiles() {
     }
     var newRow2 = $("<div>").addClass("row")
     for (var i = 4; i < 8; i++) {
-        var newButton = $("<button>").addClass("box imageCover");
+        var newButton2 = $("<button>").addClass("box imageCover");
+        var image2 = $("<img>")
+        image2.attr("src", imgURLs[i]);
 
         $(".grid").append(newRow2);
-        newRow2.append(newButton);
+        newRow2.append(newButton2);
+        newButton2.append(image2);
     }
     var newRow3 = $("<div>").addClass("row");
     for (var i = 8; i < 12; i++) {
-        var newButton = $("<button>").addClass("box imageCover");
+        var newButton3 = $("<button>").addClass("box imageCover");
+        var image3 = $("<img>")
+        image3.attr("src", imgURLs[i]);
 
         $(".grid").append(newRow3);
-        newRow3.append(newButton);
+        newRow3.append(newButton3);
+        newButton3.append(image3);
     }
 
     var newRow4 = $("<div>").addClass("row");
     for (var i = 12; i < 16; i++) {
-        var newButton = $("<button>").addClass("box imageCover");
+        var newButton4 = $("<button>").addClass("box imageCover");
+        var image4 = $("<img>")
+        image4.attr("src", imgURLs[i]);
 
         $(".grid").append(newRow4);
-        newRow4.append(newButton);
+        newRow4.append(newButton4);
+        newButton4.append(image4);
     }
 
     $(".imageCover").click(function () {
@@ -107,3 +116,5 @@ function addImagesToTiles() {
 
 
 }
+
+
