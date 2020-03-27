@@ -37,7 +37,7 @@ function getGifs() {
         //calling the function to shuffle the cards which were saved in an variable array named imgURLs
         shuffle(imgURLs);
         //calling function 
-        addImagesToTiles();
+        startGame();
         //BE SURE TO REMOVE THIS CONSOLE LOG. 
         //this shows the random 
         console.log(imgURLs);
@@ -66,8 +66,9 @@ function shuffle(arra1) {
     return arra1;
 }
 
+
 //here we are finally adding the randomly shuffled cards to the html
-function addImagesToTiles() {
+function startGame() {
     var newRow = $("<div>").addClass("row");
     for (var i = 0; i < 4; i++) {
         var newButton = $("<button>").addClass("box imageCover");
@@ -110,11 +111,44 @@ function addImagesToTiles() {
         newButton4.append(image4);
     }
 
-    $(".imageCover").click(function () {
-        $(this).toggleClass("imageCover");
-    });
+
+    doWeHaveTwoCards();
+
+    var get2Cards = []
+    function doWeHaveTwoCards() {
+        $("button.box").on("click", function () {
+            $(this).removeClass("imageCover")
+            get2Cards.push(($(this)[0].innerHTML))
+            console.log(get2Cards);
+
+            if (get2Cards.length === 2) {
+                checkMatch();
+
+            }
+        })
+    }
+
+    function checkMatch() {
+        if (get2Cards[0] === get2Cards[1]) {
+
+        }
+    }
+
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
