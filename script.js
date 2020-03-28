@@ -3,6 +3,7 @@ var queryUrl = "https://rickandmortyapi.com/api/character/?count=16";
 var firstOption;
 var secondOption;
 var preventSelected = false;
+var get2Cards = []
 
 
 //function called getgifs to send the ajax rquest
@@ -11,8 +12,8 @@ function getGifs() {
     $.ajax({
         method: "GET",
         url: queryUrl
-        //once the ajax call has loaded, then show the response
-    }).then(function (response) {
+            //once the ajax call has loaded, then show the response
+    }).then(function(response) {
         console.log(response);
         //get 8x2 cards
         //create a loop that gets exactly 8 cards
@@ -101,7 +102,7 @@ function startGame() {
 
     doWeHaveTwoCards();
 
-    var get2Cards = []
+    get2Cards = []
     var cardsURL = $("button.box")[0].innerHTML
     var len = get2Cards.length;
 
@@ -120,16 +121,15 @@ function startGame() {
 
     function doWeHaveTwoCards() {
 
-        $("button.box").on("click", function () {
-            $(this).removeClass("imageCover");
+        $("button.box").on("click", function() {
+            $(this).removeClass("imageCover").addClass("open");
             get2Cards.push(($(this)[0].innerHTML))
-            get2Cards.length = Math.min(get2Cards.length, 2);
-            // console.log(get2Cards);
-            // if (len === 2) {
 
-            // }
-            checkMatch();
+            if (get2Cards.length === 2) {
+                checkMatch();
+            }
         })
+
     }
 
     function checkMatch() {
@@ -139,22 +139,25 @@ function startGame() {
         var secondOption = get2Cards[1];
         if (firstOption === secondOption) {
             console.log("correct")
+                // firstOption.addClass("match");
+                // secondOption.addClass("match");
+            get2Cards = [];
 
-        }
-        else {
+
+
+
+        } else if (firstOption !== secondOption) {
+            setTimeout(function() {
+                $("button.box").addClass("imageCover");
+            }, 2000);
             console.log("incorrect")
+            get2Cards = [];
 
         }
 
 
-        // if (get2Cards[0] !== get2Cards[1]) {
-        //     setTimeout(function() {
-        //         $("button.box").addClass("imageCover");
-        //     }, 2000);
-        // }
-        // else if (get2Cards[0] === get2Cards[1]) {
-        //     $("button.box").removeClass("imageCover");
-        // }
+
+
 
     }
 
@@ -185,19 +188,3 @@ function startGame() {
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

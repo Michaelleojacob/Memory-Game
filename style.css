@@ -1,14 +1,77 @@
-/* #cardButton {
-    height: 60px;
-} */
+/* header */
+
+.hero-image {
+    background-image: url("https://i.udemycdn.com/course/750x422/392584_6432_2.jpg");
+    height: 30%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.hero-text {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(34, 32, 32);
+}
+
+#headerText {
+    margin: 1px;
+    margin-bottom: 10px;
+}
+
+#testText {
+    margin: 1px;
+}
+
+.hero-text button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 5px 5px;
+    color: black;
+    background-color: rgb(13, 240, 240);
+    text-align: center;
+    cursor: pointer;
+}
+
+.hero-text button:hover {
+    background-color: rgb(255, 238, 1);
+    color: black;
+}
 
 
-/* .tile {
-    margin-left: 9px;
-} */
+/* This is the Body CSS */
+
+body,
+html {
+    height: 100%;
+    margin: 0 auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0 auto;
+    margin-left: 0 auto;
+    margin-right: 0 auto;
+    /* background-image: url('https://i.redd.it/mh1f9g80t4q01.jpg'); */
+    /* background-size: 100%; */
+    background-color: rgb(252, 252, 252);
+}
 
 
-/* ----uncomment this to add cover----- */
+/* Cards Grid */
+
+.flex-contaner {
+    display: flex;
+    justify-content: center;
+}
+
+
+/* Image Cover */
 
 .imageCover {
     position: relative;
@@ -26,15 +89,11 @@
 }
 
 
-/* ------------- */
+/* Image CSS */
 
-body {
-    margin: 20px;
-    margin-left: 30%;
-    margin-right: 30%;
-    /* background-image: url('https://i.redd.it/mh1f9g80t4q01.jpg'); */
-    /* background-size: 100%; */
-    background-color: rgb(252, 252, 252);
+img {
+    height: 60px;
+    width: 60px;
 }
 
 .grid {
@@ -81,57 +140,7 @@ body {
 }
 
 
-/* This is the header CSS */
-
-body,
-html {
-    height: 100%;
-    margin: 0 auto;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.hero-image {
-    background-image: url("https://i.udemycdn.com/course/750x422/392584_6432_2.jpg");
-    height: 30%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-}
-
-.hero-text {
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: rgb(34, 32, 32);
-}
-
-#headerText {
-    margin: 1px;
-    margin-bottom: 10px;
-}
-
-#testText {
-    margin: 1px;
-}
-
-.hero-text button {
-    border: none;
-    outline: 0;
-    display: inline-block;
-    /* padding: 10px 25px; */
-    color: black;
-    background-color: rgb(13, 240, 240);
-    text-align: center;
-    cursor: pointer;
-}
-
-.hero-text button:hover {
-    background-color: rgb(255, 238, 1);
-    color: black;
-}
+/* Footer CSS */
 
 #footer {
     background-color: rgb(188, 89, 197);
@@ -157,9 +166,4 @@ html {
     border: 5px solid white;
     color: white;
     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.75);
-}
-
-img {
-    height: 60px;
-    width: 60px;
 }
