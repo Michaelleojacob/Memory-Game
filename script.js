@@ -1,22 +1,9 @@
 var imgURLs = []
 var queryUrl = "https://rickandmortyapi.com/api/character/?count=16";
-//array/variable for displayed cards
-//variable for array of cards
-//array of selected second cards
-//else total attempts --
-//if first card is selected, then select 2nd choice card
-//loop through if first selected card == second selected card == then remain face up
+var firstOption;
+var secondOption;
+var preventSelected = false;
 
-//array
-//create array
-//shuffle array
-// //loop over buttons
-// EXAMPLE: $( "span" ).click(function() {
-// EXAMPLE: $( "li" ).each(function() {
-// EXAMPLE: $( this ).toggleClass( "example" );
-//create new img elem and append to each button with a shuffled url
-//remove item with array.pop()
-//wait for user to click -- begin game
 
 //function called getgifs to send the ajax rquest
 function getGifs() {
@@ -115,28 +102,90 @@ function startGame() {
     doWeHaveTwoCards();
 
     var get2Cards = []
+    var cardsURL = $("button.box")[0].innerHTML
+    var len = get2Cards.length;
+
+
+    // click listerner/ event targer for firstOption
+    // handler function
+    // check if anything is selected else assign clicked img to firstSelection
+    // if preventSelected is true
+    // assign next img selected to secondSelection
+    // if firstSelection is and secondSelection is true
+    // check if firstSelection === secondSelection
+    // leave show class on
+    // else remove show class
+
+
+
     function doWeHaveTwoCards() {
+
         $("button.box").on("click", function () {
-            $(this).removeClass("imageCover")
+            $(this).removeClass("imageCover");
             get2Cards.push(($(this)[0].innerHTML))
-            console.log(get2Cards);
+            get2Cards.length = Math.min(get2Cards.length, 2);
+            // console.log(get2Cards);
+            // if (len === 2) {
 
-            if (get2Cards.length === 2) {
-                checkMatch();
-
-            }
+            // }
+            checkMatch();
         })
     }
 
     function checkMatch() {
-        if (get2Cards[0] === get2Cards[1]) {
+        console.log(get2Cards[0])
+        console.log(get2Cards[1])
+        var firstOption = get2Cards[0];
+        var secondOption = get2Cards[1];
+        if (firstOption === secondOption) {
+            console.log("correct")
 
         }
+        else {
+            console.log("incorrect")
+
+        }
+
+
+        // if (get2Cards[0] !== get2Cards[1]) {
+        //     setTimeout(function() {
+        //         $("button.box").addClass("imageCover");
+        //     }, 2000);
+        // }
+        // else if (get2Cards[0] === get2Cards[1]) {
+        //     $("button.box").removeClass("imageCover");
+        // }
+
     }
 
 
 
+
+    // function handler() {
+    //     $(document).on("click", function(event) {
+    //       const selected = event.target.closest("img");
+    //       console.log( selected);
+    //       if (selected === undefined || preventSelected) {
+    //         return;
+    //       }
+    //       if (firstBox === undefined) {
+    //         firstBox = selected;
+    //         showBox(selected);
+    //         return;
+    //       }
+
+    //       if (secondBox === undefined) {
+    //         preventSelected = true;
+    //         secondBox = selected;
+    //         showBox(selected);
+    //         checker();
+    //       }
+    //     });
+    //   }
+
+
 }
+
 
 
 
