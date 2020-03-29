@@ -4,6 +4,8 @@ var firstOption;
 var secondOption;
 var preventSelected = false;
 var get2Cards = []
+var matchedCards = []
+
 
 
 //function called getgifs to send the ajax rquest
@@ -135,28 +137,38 @@ function startGame() {
     function checkMatch() {
         console.log(get2Cards[0])
         console.log(get2Cards[1])
-        var firstOption = get2Cards[0];
-        var secondOption = get2Cards[1];
+        firstOption = get2Cards[0];
+        secondOption = get2Cards[1];
         if (firstOption === secondOption) {
             console.log("correct")
-                // firstOption.addClass("match");
-                // secondOption.addClass("match");
+
+            matchedCards.push(firstOption, secondOption);
+            console.log(matchedCards)
+
+            // get2Cards.splice(firstOption, secondOption);
+
+            // firstOption.removeClass("imageCover");
+            // secondOption.removeClass("imageCover");
+
             get2Cards = [];
 
-
-
+            for (var i = 0; i < matchedCards.length; i++) {
+                $("button.box").removeClass("imageCover");
+            }
 
         } else if (firstOption !== secondOption) {
             setTimeout(function() {
-                $("button.box").addClass("imageCover");
+
+
+                // secondOption.addClass("imageCover");
+
+                // $("button.box").addClass("imageCover");
+
+
             }, 2000);
             console.log("incorrect")
             get2Cards = [];
-
         }
-
-
-
 
 
     }
@@ -164,6 +176,10 @@ function startGame() {
 
 
 
+
+
+
+    // DAVID'S CODE
     // function handler() {
     //     $(document).on("click", function(event) {
     //       const selected = event.target.closest("img");
