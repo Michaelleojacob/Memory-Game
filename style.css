@@ -88,6 +88,21 @@ body {
     opacity: 1;
 }
 
+.imageCover2 {
+    position: relative;
+}
+
+.imageCover2::before {
+    content: "";
+    top: 0;
+    left: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 1;
+}
+
 
 /* Image CSS */
 

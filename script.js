@@ -104,103 +104,73 @@ function startGame() {
 
     doWeHaveTwoCards();
 
-    get2Cards = []
-    var cardsURL = $("button.box")[0].innerHTML
-    var len = get2Cards.length;
-
-
-    // click listerner/ event targer for firstOption
-    // handler function
-    // check if anything is selected else assign clicked img to firstSelection
-    // if preventSelected is true
-    // assign next img selected to secondSelection
-    // if firstSelection is and secondSelection is true
-    // check if firstSelection === secondSelection
-    // leave show class on
-    // else remove show class
-
-
-
     function doWeHaveTwoCards() {
-
+        // When you click button.box
         $("button.box").on("click", function() {
+            // The cover is removed from the one you click
             $(this).removeClass("imageCover").addClass("open");
-            get2Cards.push(($(this)[0].innerHTML))
-
+            // **We then push the whole object of the one you click to the get2Cards array**
+            get2Cards.push(($(this)))
+            console.log(get2Cards)
+                // Once 2 cards are selected
             if (get2Cards.length === 2) {
-                checkMatch();
+                // We call checkMatch passing the first index of get2Cards
+                // and the current clicked option
+                checkMatch(get2Cards[0], $(this));
             }
         })
 
     }
 
-    function checkMatch() {
-        console.log(get2Cards[0])
-        console.log(get2Cards[1])
-        firstOption = get2Cards[0];
-        secondOption = get2Cards[1];
-        if (firstOption === secondOption) {
+
+    // checkMatch takes two arguments.
+    // selection1 = get2Cards[0]
+    // selection2 = $(this) from above (most recently clicked option)
+    // Both params are the entire object 
+    function checkMatch(selection1, selection2) {
+
+        console.log("selection1", selection1[0])
+        console.log("selection2", selection2[0])
+            // If the innerHTML (the <img>) of selection1 at index[0]
+            // is the same as the innerHTML (the <img>) of selection2
+        if (selection1[0].innerHTML === selection2[0].innerHTML) {
+            // Then just return true, nothing needed. 
+            // Even returning true isn't really needed but hey, fuck it
             console.log("correct")
-
-            matchedCards.push(firstOption, secondOption);
-            console.log(matchedCards)
-
-            // get2Cards.splice(firstOption, secondOption);
-
-            // firstOption.removeClass("imageCover");
-            // secondOption.removeClass("imageCover");
-
+                // Clear get2Cards so that we can run doWeHaveTwoCards again
             get2Cards = [];
-
-            for (var i = 0; i < matchedCards.length; i++) {
-                $("button.box").removeClass("imageCover");
-            }
-
-        } else if (firstOption !== secondOption) {
+            // disable the possibility for the user to reselect prior choices
+            $(selection1[0]).attr("disabled", true)
+            $(selection2[0]).attr("disabled", true)
+            return true
+                // If the innerHTML. .. 
+        } else if (selection1[0].innerHTML !== selection2[0].innerHTML) {
             setTimeout(function() {
+                console.log("selection1", selection1[0].innerHTML)
 
-
-                // secondOption.addClass("imageCover");
-
-                // $("button.box").addClass("imageCover");
-
-
-            }, 2000);
+                console.log("selection2", $(selection2[0]).innerHTML)
+                    // We set selection1 to selection1 at index[0] to explore the object
+                selection1 = selection1[0]
+                    // We change the <button>'s class to include imageCover
+                $(selection1).addClass("imageCover")
+                    // Same thing here with selection2
+                selections2 = selection2[0]
+                $(selection2).addClass("imageCover")
+                    // Clear get2Cards so that we can run doWeHaveTwoCards again
+                get2Cards = []
+                console.log(get2Cards);
+                return false
+            }, 500);
             console.log("incorrect")
-            get2Cards = [];
+                // get2Cards = [];
         }
+
 
 
     }
 
 
 
-
-
-
-
-    // DAVID'S CODE
-    // function handler() {
-    //     $(document).on("click", function(event) {
-    //       const selected = event.target.closest("img");
-    //       console.log( selected);
-    //       if (selected === undefined || preventSelected) {
-    //         return;
-    //       }
-    //       if (firstBox === undefined) {
-    //         firstBox = selected;
-    //         showBox(selected);
-    //         return;
-    //       }
-
-    //       if (secondBox === undefined) {
-    //         preventSelected = true;
-    //         secondBox = selected;
-    //         showBox(selected);
-    //         checker();
-    //       }
-    //     });
-    //   }
 
 
 }
