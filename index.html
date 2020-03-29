@@ -16,21 +16,18 @@
         <div class="hero-text">
             <p id="headerText" style="font-size:35px">Memory Game</p>
             <p id="testText" style="font-size:20px">Test Yours!</p>
-            <button id="startButton">Score Here</button>
+            <p class="scoreCounter">Attempts: <span id="score">0</span></p>
+            <p class="scoreCounter">Best Score: <span id="high_score">0</span></p>
         </div>
     </div>
     <br>
 
-    <div class="flex-container"></div>
-    <div class="grid">
-
-    </div>
-    </div>
+    <div class="row" id="boxContainer"></div>
 
     <footer id="footer" class="footer">
         <div id="footer" class="footer-button">
-            <button class="button" type="submit" value="Start">Start</button>
-            <button class="button" type="reset" value="Reset">Reset</button>
+
+            <button class="button" type="reset" id="Reset">Reset</button>
         </div>
     </footer>
 

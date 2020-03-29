@@ -4,38 +4,43 @@ var firstOption;
 var secondOption;
 var preventSelected = false;
 var get2Cards = []
-var matchedCards = []
+var counter = 0;
+var ready = false
+var highScore = JSON.parse(localStorage.getItem("highScore"));
 
-
-
-//function called getgifs to send the ajax rquest
-function getGifs() {
-    //sending the ajax call
-    $.ajax({
-        method: "GET",
-        url: queryUrl
-            //once the ajax call has loaded, then show the response
-    }).then(function(response) {
-        console.log(response);
-        //get 8x2 cards
-        //create a loop that gets exactly 8 cards
-        //make 2 copies of each of those 8 cards
-        for (var i = 0; i < 8; i++) {
-            imgURLs.push(response.results[i].image)
-            imgURLs.push(response.results[i].image)
-        }
-        //calling the function to shuffle the cards which were saved in an variable array named imgURLs
-        shuffle(imgURLs);
-        //calling function 
-        startGame();
-        //BE SURE TO REMOVE THIS CONSOLE LOG. 
-        //this shows the random 
-        console.log(imgURLs);
-
-    });
+if (highScore === null) {
+    highScore = [1000]
+} else {
+    highScore = highScore.sort(function(a, b) {
+        return a - b
+    })
 }
+
+
+
 //calling function
 getGifs();
+
+$(document).on("click", "button.box", function() {
+    if (ready) {
+        // The cover is removed from the button you click
+        $(this).removeClass("box-cover");
+        $(this).find(".img-box").removeClass("img-hide")
+            // **We then push the whole object of the one you click to the get2Cards array**
+
+        get2Cards.push(this)
+
+        if (get2Cards.length === 2) {
+            // We call checkMatch passing the first index of get2Cards
+            // and the current clicked option
+            checkMatch();
+        }
+    } else {
+        console.log("Timer not finished yet")
+    }
+
+})
+$("#Reset").on("click", startGame)
 
 //this piece of code is what shuffles the 8x2 cards and saves it as a function
 function shuffle(arra1) {
@@ -56,121 +61,126 @@ function shuffle(arra1) {
     return arra1;
 }
 
+//function called getgifs to send the ajax rquest
+function getGifs() {
+    //sending the ajax call
+    $.ajax({
+        method: "GET",
+        url: queryUrl
+            //once the ajax call has loaded, then show the response
+    }).then(function(response) {
+        console.log(response);
+        //get 8x2 cards
+        //create a loop that gets exactly 8 cards
+        //make 2 copies of each of those 8 cards
+        for (var i = 0; i < 8; i++) {
 
-//here we are finally adding the randomly shuffled cards to the html
-function startGame() {
-    var newRow = $("<div>").addClass("row");
-    for (var i = 0; i < 4; i++) {
-        var newButton = $("<button>").addClass("box imageCover");
-        var image = $("<img>")
-        image.attr("src", imgURLs[i]);
+            // create one instance of image object with all attributes
+            const item = {
+                    url: response.results[i].image,
+                    id: i,
+                    matched: false
+                }
+                // inject above object into URL array twice.
 
-        $(".grid").append(newRow);
-        newRow.append(newButton);
-        newButton.append(image);
-    }
-    var newRow2 = $("<div>").addClass("row")
-    for (var i = 4; i < 8; i++) {
-        var newButton2 = $("<button>").addClass("box imageCover");
-        var image2 = $("<img>")
-        image2.attr("src", imgURLs[i]);
+            imgURLs.push(item, item)
+        }
 
-        $(".grid").append(newRow2);
-        newRow2.append(newButton2);
-        newButton2.append(image2);
-    }
-    var newRow3 = $("<div>").addClass("row");
-    for (var i = 8; i < 12; i++) {
-        var newButton3 = $("<button>").addClass("box imageCover");
-        var image3 = $("<img>")
-        image3.attr("src", imgURLs[i]);
+        //calling function 
+        startGame();
+        //BE SURE TO REMOVE THIS CONSOLE LOG. 
+        //this shows the random 
+        console.log(imgURLs);
 
-        $(".grid").append(newRow3);
-        newRow3.append(newButton3);
-        newButton3.append(image3);
-    }
+    });
+}
 
-    var newRow4 = $("<div>").addClass("row");
-    for (var i = 12; i < 16; i++) {
-        var newButton4 = $("<button>").addClass("box imageCover");
-        var image4 = $("<img>")
-        image4.attr("src", imgURLs[i]);
+function checkMatch() {
+    //set the selections as variables
+    var selection1 = $(get2Cards[0]);
+    var selection2 = $(get2Cards[1]);
 
-        $(".grid").append(newRow4);
-        newRow4.append(newButton4);
-        newButton4.append(image4);
-    }
+    counter++
 
 
-    doWeHaveTwoCards();
+    $("#score").text(counter)
 
-    function doWeHaveTwoCards() {
-        // When you click button.box
-        $("button.box").on("click", function() {
-            // The cover is removed from the one you click
-            $(this).removeClass("imageCover").addClass("open");
-            // **We then push the whole object of the one you click to the get2Cards array**
-            get2Cards.push(($(this)))
-            console.log(get2Cards)
-                // Once 2 cards are selected
-            if (get2Cards.length === 2) {
-                // We call checkMatch passing the first index of get2Cards
-                // and the current clicked option
-                checkMatch(get2Cards[0], $(this));
+    // If the two cards are the same do the follwing 
+    if (selection1.data("id") === selection2.data("id")) {
+        console.log("correct")
+            // Clear get2Cards so that we can run checkmatch again
+        get2Cards = [];
+        // disable the possibility for the user to reselect prior choices
+        selection1.attr("disabled", true)
+        selection2.attr("disabled", true)
+
+        var isGameOver = true;
+        for (var i = 0; i < imgURLs.length; i++) {
+            if (imgURLs[i].id === selection1.data("id")) {
+                console.log(selection1.data("id"))
+                imgURLs[i].matched = true
             }
-        })
+            if (imgURLs[i].matched === false) {
+                isGameOver = false
+            }
+        }
 
-    }
+        if (isGameOver) {
 
+            //this is where we can direct to congrats page!
+            console.log("Game is over! You Win!")
+            highScore.push(counter)
+            localStorage.setItem("highScore", JSON.stringify(highScore.sort()))
 
-    // checkMatch takes two arguments.
-    // selection1 = get2Cards[0]
-    // selection2 = $(this) from above (most recently clicked option)
-    // Both params are the entire object 
-    function checkMatch(selection1, selection2) {
-
-        console.log("selection1", selection1[0])
-        console.log("selection2", selection2[0])
-            // If the innerHTML (the <img>) of selection1 at index[0]
-            // is the same as the innerHTML (the <img>) of selection2
-        if (selection1[0].innerHTML === selection2[0].innerHTML) {
-            // Then just return true, nothing needed. 
-            // Even returning true isn't really needed but hey, fuck it
-            console.log("correct")
-                // Clear get2Cards so that we can run doWeHaveTwoCards again
-            get2Cards = [];
-            // disable the possibility for the user to reselect prior choices
-            $(selection1[0]).attr("disabled", true)
-            $(selection2[0]).attr("disabled", true)
-            return true
-                // If the innerHTML. .. 
-        } else if (selection1[0].innerHTML !== selection2[0].innerHTML) {
-            setTimeout(function() {
-                console.log("selection1", selection1[0].innerHTML)
-
-                console.log("selection2", $(selection2[0]).innerHTML)
-                    // We set selection1 to selection1 at index[0] to explore the object
-                selection1 = selection1[0]
-                    // We change the <button>'s class to include imageCover
-                $(selection1).addClass("imageCover")
-                    // Same thing here with selection2
-                selections2 = selection2[0]
-                $(selection2).addClass("imageCover")
-                    // Clear get2Cards so that we can run doWeHaveTwoCards again
-                get2Cards = []
-                console.log(get2Cards);
-                return false
-            }, 500);
-            console.log("incorrect")
-                // get2Cards = [];
         }
 
 
 
+    } else {
+        ready = false
+        setTimeout(function() {
+            ready = true
+                //console.log("selection1", selection1)
+
+
+
+            selection1.addClass("box-cover");
+            selection1.find(".img-box").addClass("img-hide")
+
+            selection2.addClass("box-cover");
+            selection2.find(".img-box").addClass("img-hide")
+
+            get2Cards = []
+            console.log(get2Cards);
+        }, 500);
+        console.log("incorrect")
+            // get2Cards = [];
+    }
+}
+
+//here we are adding the randomly shuffled cards to the html
+function startGame() {
+    counter = 0;
+    $("#score").text(counter)
+    $("#high_score").text(highScore[0])
+    $("#boxContainer").empty()
+        //calling the function to shuffle the cards which were saved in an variable array named imgURLs
+    shuffle(imgURLs);
+    for (var i = 0; i < imgURLs.length; i++) {
+        // initialize all elements to unmatched
+        imgURLs[i].matched = false;
+        var parent = $("<div>").addClass("col-3");
+
+        // <button data-id="4" >Click</button>
+        var newButton = $("<button>").addClass("box box-cover").data("id", imgURLs[i].id);
+        var image = $("<img>").addClass("img-box img-hide").attr("src", imgURLs[i].url);
+        var div = $("<div>").addClass("tile").append(image)
+        newButton.append(div)
+        parent.append(newButton)
+        $("#boxContainer").append(parent)
     }
 
-
-
+    ready = true
 
 
 }
