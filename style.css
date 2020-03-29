@@ -1,5 +1,9 @@
 /* header */
 
+* {
+    box-sizing: border-box;
+}
+
 .hero-image {
     background-image: url("https://i.udemycdn.com/course/750x422/392584_6432_2.jpg");
     height: 30%;
@@ -27,7 +31,7 @@
     margin: 1px;
 }
 
-.hero-text button {
+.scoreCounter {
     border: none;
     outline: 0;
     display: inline-block;
@@ -38,7 +42,7 @@
     cursor: pointer;
 }
 
-.hero-text button:hover {
+.hero-text .scoreCounter:hover {
     background-color: rgb(255, 238, 1);
     color: black;
 }
@@ -63,95 +67,67 @@ body {
 }
 
 
-/* Cards Grid */
-
-.flex-contaner {
-    display: flex;
-    justify-content: center;
-}
-
-
-/* Image Cover */
-
-.imageCover {
-    position: relative;
-}
-
-.imageCover::before {
-    content: "";
-    top: 0;
-    left: 0;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background-color: black;
-    opacity: 1;
-}
-
-.imageCover2 {
-    position: relative;
-}
-
-.imageCover2::before {
-    content: "";
-    top: 0;
-    left: 0;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background-color: black;
-    opacity: 1;
-}
-
-
-/* Image CSS */
-
-img {
-    height: 60px;
-    width: 60px;
-}
-
-.grid {
-    margin-left: 4%;
-    margin-right: 5%;
-    margin-top: 15%;
-    width: 80vw;
-    max-width: 60vh;
-    height: 80vw;
-    max-height: 60vh;
-    font-size: 1rem;
-    text-align: center;
-}
+/* create container for elements that wrap over 100% width */
 
 .row {
     display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    margin: 0 auto;
+}
+
+@media only screen and (max-width: 1200px) {
+    .row {
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 860px) {
+    .row {
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .row {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .row {
+        width: 90%;
+    }
+}
+
+
+/* create element that takes up 25% of the row */
+
+.col-3 {
+    width: 25%;
+    box-sizing: border-box;
 }
 
 .box {
-    background: rgb(36, 216, 216);
-    margin: 5px;
-    color: white;
-    font-weight: bold;
-    flex: 1 0 auto;
-    position: relative;
+    height: 100%;
+    width: 100%;
 }
 
-.box:after {
-    content: "";
-    float: left;
-    display: block;
-    padding-top: 100%;
+.tile {
+    margin: 2px;
+    border: 2px solid purple;
+    border-radius: 1px;
+    background-color: black;
 }
 
-.box .inner {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.img-box {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.img-hide {
+    opacity: 0;
 }
 
 
