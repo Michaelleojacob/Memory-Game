@@ -72,13 +72,25 @@ body {
 .row {
     display: flex;
     flex-wrap: wrap;
-    width: 50%;
+    width: 31%;
     margin: 0 auto;
 }
 
 @media only screen and (max-width: 1200px) {
     .row {
         width: 60%;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .row {
+        width: 64%;
+    }
+}
+
+@media only screen and (max-width: 950px) {
+    .row {
+        width: 65%;
     }
 }
 
@@ -163,7 +175,7 @@ body {
     height: 100%;
     width: 100%;
     margin: 0;
-    background-color: rgba(230,230,250, 0.95);
+    background-color: rgba(230, 230, 250, 0.95);
     position: absolute;
     left: 0;
     top: 0;
@@ -173,16 +185,15 @@ body {
     justify-content: center;
     visibility: hidden;
     opacity: 0;
-  }
-  
-  #win-screen>* {
+}
+
+#win-screen>* {
     line-height: 0;
     margin: 25px;
-  }
-  
-  #win-screen.visible {
+}
+
+#win-screen.visible {
     visibility: visible;
     opacity: 1;
     transition: all 0.8s;
-  }
-  
+}

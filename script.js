@@ -14,7 +14,7 @@ var $winScreen = $("#win-screen");
 if (highScore === null) {
     highScore = [1000]
 } else {
-    highScore = highScore.sort(function (a, b) {
+    highScore = highScore.sort(function(a, b) {
         return a - b
     })
 }
@@ -24,13 +24,13 @@ if (highScore === null) {
 //calling function
 getGifs();
 
-$(document).on("click", "button.box", function () {
+$(document).on("click", "button.box", function() {
 
     if (ready) {
         // The cover is removed from the button you click
         $(this).removeClass("box-cover");
         $(this).find(".img-box").removeClass("img-hide")
-        // **We then push the whole object of the one you click to the get2Cards array**
+            // **We then push the whole object of the one you click to the get2Cards array**
 
         get2Cards.push(this)
 
@@ -71,8 +71,8 @@ function getGifs() {
     $.ajax({
         method: "GET",
         url: queryUrl
-        //once the ajax call has loaded, then show the response
-    }).then(function (response) {
+            //once the ajax call has loaded, then show the response
+    }).then(function(response) {
         console.log(response);
         //get 8x2 cards
         //create a loop that gets exactly 8 cards
@@ -81,11 +81,11 @@ function getGifs() {
 
             // create one instance of image object with all attributes
             const item = {
-                url: response.results[i].image,
-                id: i,
-                matched: false
-            }
-            // inject above object into URL array twice.
+                    url: response.results[i].image,
+                    id: i,
+                    matched: false
+                }
+                // inject above object into URL array twice.
 
             imgURLs.push(item, item)
         }
@@ -115,7 +115,7 @@ function checkMatch() {
     // If the two cards are the same do the follwing 
     if (selection1.data("id") === selection2.data("id")) {
         console.log("correct")
-        // Clear get2Cards so that we can run checkmatch again
+            // Clear get2Cards so that we can run checkmatch again
         get2Cards = [];
         // disable the possibility for the user to reselect prior choices
         selection1.attr("disabled", true)
@@ -146,9 +146,9 @@ function checkMatch() {
 
     } else {
         ready = false
-        setTimeout(function () {
+        setTimeout(function() {
             ready = true
-            //console.log("selection1", selection1)
+                //console.log("selection1", selection1)
 
 
 
@@ -162,7 +162,7 @@ function checkMatch() {
             console.log(get2Cards);
         }, 500);
         console.log("incorrect")
-        // get2Cards = [];
+            // get2Cards = [];
     }
 }
 
@@ -173,7 +173,7 @@ function startGame() {
     $("#score").text(counter)
     $("#high_score").text(highScore[0])
     $("#boxContainer").empty()
-    //calling the function to shuffle the cards which were saved in an variable array named imgURLs
+        //calling the function to shuffle the cards which were saved in an variable array named imgURLs
     shuffle(imgURLs);
     for (var i = 0; i < imgURLs.length; i++) {
         // initialize all elements to unmatched
@@ -195,8 +195,7 @@ function startGame() {
 }
 
 function renderWinScreen($winScreen) {
-    setTimeout(function () {
+    setTimeout(function() {
         $winScreen.addClass("visible");
     }, 400);
 }
-
