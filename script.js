@@ -6,17 +6,12 @@ var preventSelected = false;
 var get2Cards = []
 var counter = 0;
 var ready = false
-var highScore = JSON.parse(localStorage.getItem("highScore"));
+var highScore = parseInt(localStorage.getItem("highScore"));
 var $winScreen = $("#win-screen");
 
 
-
-if (highScore === null) {
-    highScore = [1000]
-} else {
-    highScore = highScore.sort(function(a, b) {
-        return a - b
-    })
+if (Number.isNaN(highScore)) {
+    highScore = "none";
 }
 
 
@@ -109,7 +104,7 @@ function checkMatch() {
 
     $("#score").text(counter)
     $("#totalAttempts").text(counter);
-    $("#bestScore").text(highScore[0]);
+
 
 
     // If the two cards are the same do the follwing 
@@ -134,16 +129,12 @@ function checkMatch() {
 
         if (isGameOver) {
 
-            //this is where we can direct to congrats page!
+            if (highScore === "none" || highScore > counter) {
+                highScore = counter;
+            }
+            localStorage.setItem("highScore", highScore);
             renderWinScreen($winScreen);
-            console.log("Game is over! You Win!")
-            highScore.push(counter)
-            localStorage.setItem("highScore", JSON.stringify(highScore.sort()))
-
         }
-
-
-
     } else {
         ready = false
         setTimeout(function() {
@@ -171,7 +162,7 @@ function startGame() {
     counter = 0;
     $winScreen.removeClass("visible");
     $("#score").text(counter)
-    $("#high_score").text(highScore[0])
+    $("#high_score").text(highScore)
     $("#boxContainer").empty()
         //calling the function to shuffle the cards which were saved in an variable array named imgURLs
     shuffle(imgURLs);
@@ -197,5 +188,6 @@ function startGame() {
 function renderWinScreen($winScreen) {
     setTimeout(function() {
         $winScreen.addClass("visible");
+        $("#bestScore").text(highScore);
     }, 400);
 }
