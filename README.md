@@ -3,15 +3,15 @@
 ## Getting Started
 To get get started, open the game in the webbrowser and the game will begin the moment you click on any one of the 16 cards on the screen.
 
-### Prerequisites
-This game should work in any browser. But we heavily recommend to open the game and use it in chrome.
-
-### Installing
-This game should work entirely from the browser, no installing required. Would recommend chrome once again if not installed already.
+## Installing
+No installation required. This game should work entirely from the browser.
 
 ## Deployment
 
 You can find the link to the github.io at https://michaelleojacob.github.io/Memory-Game/. Open this link in your browser to start playing!
+
+## How the game works
+Open the game in the browser from the link in deployment (see above). The game starts as soon as the page loads. Start clicking on the cards shown to try and find matching cards! there are 8 different cards each with a matching pair, 16 cards total. Once all 16 cards have been matched up the game is over. The score is based off a lower attempt count. Scores will be stored on local stoage. You can then reset the game to start over and play again.
 
 ## Built With
 
@@ -27,8 +27,4 @@ Keaton Smith, Kevin Nguyen, Mark Prodehl, Michael Jacob
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
-## License
-
-## Acknowledgments
-
-Shoutout to the Trilogy team at UCSD, the teacher, the TA's and our tutors.  
+ 
