@@ -27,4 +27,6 @@ Keaton Smith, Kevin Nguyen, Mark Prodehl, Michael Jacob
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
+![howTo](https://i.imgur.com/Cd7CFFJ.gif)
+
  
